@@ -5,18 +5,18 @@ DIR = -I$(LIBDIR)
 LIBDIR = ../../ft_printf
 LIBNAME = ftprintf
 
-TEST = test_printf.c
+MAIN = main.c
 
-TOBJECTS = $(TEST:.c=.o)
+MOBJECTS = $(MAIN:.c=.o)
 
-test: $(TOBJECTS)
-	$(CC) $(CFLAGS) $(DIR) -o test_out $(TOBJECTS) -L$(LIBDIR) -l$(LIBNAME)
-	./test_out
+main: $(MOBJECTS)
+	$(CC) $(CFLAGS) $(DIR) -o out $(MOBJECTS) -L$(LIBDIR) -l$(LIBNAME)
+	./out
 
-tclean:
-	rm -f $(TOBJECTS) test_out
+mclean:
+	rm -f $(MOBJECTS) out
 
-.DEFAULT_GOAL := test
+.DEFAULT_GOAL := main
 
-.PHONY: test tclean
+.PHONY: main mclean
 .SILENT:
